@@ -144,6 +144,7 @@ export class CovidService {
   public getSummaryOf7days(day1:any,day7:any, countrySlug='all'){
     this.summaryOf7days = [[],[],[]];
     if(countrySlug=='all'){
+    //this.httpClient.get<any[]>('https://api.covid19api.com/' + '/world?from=' + day1 + '&to=' + day7).subscribe(
     this.httpClient.get<any>('https://corona.lmao.ninja/v2/historical/all?lastdays=8').subscribe(
       response => {
         if(response!=null){
@@ -166,6 +167,7 @@ export class CovidService {
     this.summaryTillToday[3]=[];
     var today = (new Date()).toISOString().slice(0,10)
     if(countrySlug == 'all'){
+      //this.httpClient.get<any[]>('https://api.covid19api.com/' + '/world?from=' + day1 + '&to=' + today).subscribe(
       this.httpClient.get<any[]>('https://corona.lmao.ninja/v2/historical/all?from=' + day1 + '&to=' + today).subscribe(
           (response) => {
             this.sortByName(response,"TotalConfirmed");
